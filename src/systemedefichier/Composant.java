@@ -1,7 +1,8 @@
 package systemedefichier;
 
 public abstract class Composant {
-	 protected String _nom;
+	 
+	protected String _nom;
 	 
 	 
 	 abstract int getTaille();
