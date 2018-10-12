@@ -1,30 +1,51 @@
-package systemedefichier;
+
+
 import java.util.*;
 
 public class Repertoire extends Composant {
 	
-	List<Composant> _comtenu;
-
-	public Repertoire(String nom) // A finir
+	private List<Composant> _contenu;
+	
+	public Repertoire(String nom)
 	{
-		super(nom); // recupérer le code de Andy
-		_comtenu = new ArrayList<Composant>();
+		_nom = nom;
+		_contenu = new ArrayList<Composant>();
 	}
 	
-	public boolean ajouterComposant(Composant compo) // A finir
-	{
+	public boolean ajouterComposant(Composant compo)
+	{	
 		if(compo != null)
 		{
-			_comtenu.add(compo);
-			return true;
+			if(compo instanceof Repertoire) // si compo est un est repertoire
+			{
+				if(compo != this)
+				{
+					_contenu.add(compo);
+					return true; // compo est un repertoire et pas un ascendant de this
+				}
+				return false; // compo est un repertoire et est un ascendant de this
+			}
+			else if(compo instanceof Fichier) // si compo est un est fichier
+			{
+				_contenu.add(compo);
+				return true;
+			}
 		}
-		
-		return false;
+		return false; // compo est null
 	}
 	
-	public int getTaille() // A finir
+	@Override
+	public int getTaille()
 	{
-		return 2;
+		int taille = 0;
+		for(Composant compo: _contenu)
+		{
+			taille += compo.getTaille();
+		}
+		
+		return taille;
 	}
+	
+
 
 }
