@@ -1,11 +1,19 @@
 package systemedefichier;
 
-public class Fichier extends Composant{
-	int taille;
-public int GetTaille() { return this.taille; }
-public Fichier(String nom,int t) {
-	super(nom);
-	this.taille=t;
+public class Fichier extends Composant {
 	
-};
+	
+	private int _taille;
+	
+	
+	public Fichier(String nom, int taille)
+	{
+		_nom = nom;
+		_taille = taille;
+	}
+	
+	public int getTaille()
+	{
+		return _taille;
+	}
 }
