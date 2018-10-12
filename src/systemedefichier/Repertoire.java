@@ -17,6 +17,7 @@ public class TestRepertoire extends TestComposant {
 		_pere = null;
 	}
 	
+	
 	public boolean ajouterComposant(TestComposant compo)
 	{	
 		if(compo != null)
