@@ -2,37 +2,45 @@
 
 import java.util.*;
 
-public class TestRepertoire extends TestComposant {
+public class Repertoire extends Composant {
 	
-
-	private List<TestComposant> _contenu;
+	/**Liste des composants du repertoire*/
+	private List<Composant> _contenu;
 	
-	private TestRepertoire _pere;
+	/**Le père du repertoire*/
+	private Repertoire _pere;
 	
-
-	public TestRepertoire(String nom)
+	/**
+	 * Constructeur du repertoire
+	 * @param nom du repertoire
+	 */
+	public Repertoire(String nom)
 	{
 		_nom = nom;
-		_contenu = new ArrayList<TestComposant>();
+		_contenu = new ArrayList<Composant>();
 		_pere = null;
 	}
 	
-	
-	public boolean ajouterComposant(TestComposant compo)
+	/**
+	 * 
+	 * @param compo un composant
+	 * @return vrai si le composant a été ajouter dans le repretoire sinon faux
+	 */
+	public boolean ajouterComposant(Composant compo)
 	{	
 		if(compo != null)
 		{
-			if(compo instanceof TestRepertoire) // si compo est un est repertoire
+			if(compo instanceof Repertoire) // si compo est un est repertoire
 			{
-				if(compo != this && !estMonDescendant((TestRepertoire) compo)) /*!this.estDescendantDe((TestRepertoire) compo))*/
+				if(compo != this && !estMonDescendant((Repertoire) compo)) /*!this.estDescendantDe((TestRepertoire) compo))*/
 				{
 					_contenu.add(compo);
-					((TestRepertoire) compo).setPere(this);
+					((Repertoire) compo).setPere(this);
 					return true; // compo est un repertoire et pas un ascendant de this
 				}
 				return false; // compo est un repertoire et est un ascendant de this
 			}
-			else if(compo instanceof TestFichier) // si compo est un est fichier
+			else if(compo instanceof Fichier) // si compo est un est fichier
 			{
 				_contenu.add(compo);
 				return true;
@@ -45,7 +53,7 @@ public class TestRepertoire extends TestComposant {
 	public int getTaille()
 	{
 		int taille = 0;
-		for(TestComposant compo: _contenu)
+		for(Composant compo: _contenu)
 		{
 			taille += compo.getTaille();
 		}
@@ -53,20 +61,33 @@ public class TestRepertoire extends TestComposant {
 		return taille;
 	}
 	
-	public TestRepertoire getPere()
+	/**
+	 * Getter sur pere de ce repertoire
+	 * @return _pere 
+	 */
+	public Repertoire getPere()
 	{
 		return _pere;
 	}
 	
-	public void setPere(TestRepertoire rep)
+	/**
+	 * Setter sur pere de ce repertoire
+	 * @param rep un repertoire
+	 */
+	public void setPere(Repertoire rep)
 	{
 		_pere = rep;
 	}
 	
-	public boolean estDescendantDe(TestRepertoire rep)
+	/**
+	 * 
+	 * @param rep un repertoire
+	 * @return vrai si cet repertoire un descendant de rep
+	 */
+	public boolean estDescendantDe(Repertoire rep)
 	{
 		boolean bool = false;
-		TestRepertoire pere = _pere;
+		Repertoire pere = _pere;
 		while(pere != null && rep !=null && !bool)
 		{
 			if(pere == rep)
@@ -82,7 +103,7 @@ public class TestRepertoire extends TestComposant {
 		return bool;
 	}
 	
-	public boolean estMonDescendant(TestRepertoire rep)
+	public boolean estMonDescendant(Repertoire rep)
 	{
 		if(rep == null || _pere == null)
 		{
