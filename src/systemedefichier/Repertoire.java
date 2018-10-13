@@ -49,6 +49,10 @@ public class Repertoire extends Composant {
 		return false; // compo est null
 	}
 	
+	/**
+	 * La methode getTaille propre au repertoire
+	 * @return la taille du repertoire
+	 */
 	@Override
 	public int getTaille()
 	{

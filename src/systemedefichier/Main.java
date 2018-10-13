@@ -43,14 +43,23 @@ public class Main {
 		r6.ajouterComposant(f7);
 		r6.ajouterComposant(f8);
 		r6.ajouterComposant(f9);
-		System.out.println(r6.ajouterComposant(r6)); /////////////////////////// test
+		if(!r6.ajouterComposant(r6))
+		{
+			System.out.println("Impossible de rajouter "+"'"+r6.getNom()+"'"+" dans "+r6.getNom());
+		}
 		
 		r5.ajouterComposant(r8);
-		System.out.println(r8.ajouterComposant(r1)); /////////////////////////// test
-		System.out.println(r8.ajouterComposant(r3)); /////////////////////////// test
+		if(!r8.ajouterComposant(r1))
+		{
+			System.out.println("Impossible de rajouter "+"'"+r1.getNom()+"'"+" dans "+r8.getNom());
+		}
+		if(r8.ajouterComposant(r3))
+		{
+			System.out.println("'"+r3.getNom()+"'"+" dans "+r8.getNom());
+		}
 		
 		
-		System.out.println(r1.getTaille());
+		System.out.println("La taille totale du repertoire "+"'"+r1.getNom()+"'"+" est "+r1.getTaille());
 		
 	}
 	

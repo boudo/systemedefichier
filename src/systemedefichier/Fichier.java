@@ -16,6 +16,10 @@ public class Fichier extends Composant {
 		_taille = taille;
 	}
 	
+	/**
+	 * La methode getTaille propre au fichier
+	 * @return la taille du fichier
+	 */
 	@Override
 	public int getTaille()
 	{
